@@ -1,18 +1,21 @@
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import * as Styles from "./styles.ts";
 
-export const TableList = () => {
+type TableProps = {
+  list: string;
+};
+export const TableList = ({ list }: TableProps) => {
   return (
     <Styles.TableContainer>
       <Table variant="striped" colorScheme="teal">
         <Thead>
           <Tr>
-            <Th>title list</Th>
+            <Th>list the title</Th>
           </Tr>
         </Thead>
         <Tbody>
           <Tr>
-            <Td>title</Td>
+            <Td>{list}</Td>
             <Td isNumeric>button</Td>
           </Tr>
         </Tbody>

@@ -19,7 +19,7 @@ export const Box = styled($Box)<BoxProps>((props) =>
 export const Heading = styled($Heading)<HeadingProps>((props) =>
   css({
     my: "2rem",
-    fontWeight: "bold",
     color: "teal",
+    fontWeight: "bold",
   })(props.theme)
 ) as typeof $Heading;
