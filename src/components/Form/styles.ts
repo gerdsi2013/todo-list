@@ -15,7 +15,7 @@ import {
   css,
 } from "@chakra-ui/react";
 
-export const FormControl = styled($FormControl)<FormControlProps>((props) =>
+export const FormControl = styled.form<FormControlProps>((props) =>
   css({
     px: 4,
     maxWidth: "530px",
