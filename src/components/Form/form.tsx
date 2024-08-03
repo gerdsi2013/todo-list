@@ -1,12 +1,15 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { schema } from "../../validation/validation";
 import { UseTaskQueryClient } from "../../hooks/useTaskQueryClient";
 import { PlusSquareIcon } from "@chakra-ui/icons";
 import { ITaskProps } from "../../Interface/interface";
+
+import { TaskTitleList } from "../TaskTitleList/taskTitleList";
 import * as Styles from "./styles";
-import { TableList } from "../tableList/tableList";
-import { useState } from "react";
+import { useFetchDetailsTask } from "../../hooks/useFetchDetailsTask";
+import { useParams } from "react-router-dom";
 
 type FormValues = {
   title: string;
@@ -22,11 +25,12 @@ export const Form: React.FC = () => {
     resolver: yupResolver(schema),
   });
   const [tasks, setTasks] = useState<ITaskProps[]>([]);
-  const { data } = UseTaskQueryClient();
+  const { query } = UseTaskQueryClient();
+
+  const { id } = useParams();
 
   const handleOnSubmit = (dataForm: FormValues) => {
-    setTasks([...data, dataForm]);
-    console.log("tasks: ", tasks);
+    setTasks([...query.data, dataForm]);
   };
 
   return (
@@ -50,7 +54,9 @@ export const Form: React.FC = () => {
         </Styles.Box>
       </Styles.FormControl>
       {tasks.map((task) => {
-        return <TableList key={task.id} list={task.title} />;
+        return (
+          <TaskTitleList details={`${id}`} key={task.id} title={task.title} />
+        );
       })}
     </>
   );

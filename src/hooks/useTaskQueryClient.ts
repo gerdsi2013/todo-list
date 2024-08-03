@@ -3,9 +3,9 @@ import { Api } from "../services/Api";
 
 export const UseTaskQueryClient = () => {
   const fetchData = async () => {
-    const response = await Api.get("task");
-    console.log(response.data);
-    return response.data;
+    const { data } = await Api.get("task/");
+
+    return data;
   };
 
   const query = useQuery({
@@ -13,5 +13,7 @@ export const UseTaskQueryClient = () => {
     queryFn: fetchData,
   });
 
-  return query;
+  return {
+    query,
+  };
 };

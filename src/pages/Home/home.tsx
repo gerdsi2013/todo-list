@@ -1,5 +1,6 @@
 import { Form } from "../../components/Form/form";
-import { TableList } from "../../components/tableList/tableList";
+
+import { TaskTitleList } from "../../components/TaskTitleList/taskTitleList";
 import * as Styles from "./styles";
 
 export const Home: React.FC = () => {
@@ -7,7 +8,6 @@ export const Home: React.FC = () => {
     <Styles.Box>
       <Styles.Heading size="3xl">TodoList</Styles.Heading>
       <Form />
-      <TableList list="teste" />
     </Styles.Box>
   );
 };
